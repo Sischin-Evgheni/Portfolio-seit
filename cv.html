@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lebenslauf — Evgheni Sischin</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 40px 24px;
+    }
+    .cv-card {
+      max-width: 760px;
+      width: 100%;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.25);
+    }
+    .cv-card h1 { font-size: 2rem; margin-bottom: 12px; }
+    .cv-card p { color: var(--fg2); line-height: 1.8; margin-bottom: 18px; }
+    .cv-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+    .cv-link { display: inline-flex; align-items: center; gap: 8px; }
+  </style>
+</head>
+<body>
+  <div class="cv-card">
+    <p class="hero-badge">CV / Résumé</p>
+    <h1>Evgheni Sischin</h1>
+    <p>Fullstack-Entwickler und KI-Spezialist mit Fokus auf skalierbare Webanwendungen, Produktentwicklung und die sinnvolle Integration von KI in reale Workflows.</p>
+    <p>Erfahrung in React, TypeScript, Node.js, PostgreSQL, automatisierten Workflows, AI-Features und pragmatischer Produktumsetzung.</p>
+    <div class="cv-actions">
+      <a class="btn-primary cv-link" href="mailto:info@newdreden.com">Kontakt aufnehmen</a>
+      <a class="btn-secondary cv-link" href="index.html">Zurück zur Startseite</a>
+    </div>
+  </div>
+</body>
+</html>

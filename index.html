@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evgheni Sischin — Fullstack Developer & KI-Spezialist</title>
+  <meta name="description" content="Evgheni Sischin — Fullstack-Entwickler und KI-Integrationsspezialist. Skalierbare Webanwendungen für den deutschsprachigen Markt." />
+  <meta name="author" content="Evgheni Sischin" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Evgheni Sischin — Fullstack Developer & KI-Spezialist" />
+  <meta property="og:description" content="Ich entwickle skalierbare, KI-gestützte Webanwendungen. Remote / EU." />
+  <meta property="og:site_name" content="Evgheni Sischin Portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Evgheni Sischin — Fullstack Developer & KI-Spezialist" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ── CANVAS BACKGROUND ── -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- ── NAVBAR ── -->
+<nav class="nav">
+  <button class="nav-logo" onclick="scrollToSection('hero')">ES<span>_</span></button>
+
+  <div class="nav-links">
+    <button data-i18n="nav.about" data-nav-section="about" onclick="scrollToSection('about')">.Über mich</button>
+    <button data-i18n="nav.services" data-nav-section="services" onclick="scrollToSection('services')">.Leistungen</button>
+    <button data-i18n="nav.skills" data-nav-section="skills" onclick="scrollToSection('skills')">.Skills</button>
+    <button data-i18n="nav.experience" data-nav-section="experience" onclick="scrollToSection('experience')">.Erfahrung</button>
+    <button data-i18n="nav.projects" data-nav-section="projects" onclick="scrollToSection('projects')">.Projekte</button>
+    <button data-i18n="nav.testimonials" data-nav-section="testimonials" onclick="scrollToSection('testimonials')">.Empfehlungen</button>
+    <button data-i18n="nav.contact" data-nav-section="contact" onclick="scrollToSection('contact')">.Kontakt</button>
+  </div>
+
+  <div class="nav-controls">
+    <div class="lang-switcher">
+      <button data-lang-btn="de" class="active" onclick="setLang('de')">DE</button>
+      <button data-lang-btn="en" onclick="setLang('en')">EN</button>
+      <button data-lang-btn="ru" onclick="setLang('ru')">RU</button>
+    </div>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">☀</button>
+    <button class="menu-toggle" id="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+  </div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div id="mobile-menu" class="mobile-menu">
+  <button data-mob-i18n="nav.about" onclick="scrollToSection('about')">.Über mich</button>
+  <button data-mob-i18n="nav.services" onclick="scrollToSection('services')">.Leistungen</button>
+  <button data-mob-i18n="nav.skills" onclick="scrollToSection('skills')">.Skills</button>
+  <button data-mob-i18n="nav.experience" onclick="scrollToSection('experience')">.Erfahrung</button>
+  <button data-mob-i18n="nav.projects" onclick="scrollToSection('projects')">.Projekte</button>
+  <button data-mob-i18n="nav.testimonials" onclick="scrollToSection('testimonials')">.Empfehlungen</button>
+  <button data-mob-i18n="nav.contact" onclick="scrollToSection('contact')">.Kontakt</button>
+</div>
+
+<!-- ── MAIN ── -->
+<main>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <p class="hero-badge reveal" data-i18n="hero.badge">Fullstack-Entwickler &amp; KI-Integrationsspezialist</p>
+    <h1 class="reveal reveal-delay-1">Evgheni Sischin.</h1>
+    <h2 id="hero-subtitle" class="reveal reveal-delay-2" data-i18n="hero.subtitle" style="white-space:pre-line">Ich verbinde Mensch
+und Maschine.</h2>
+    <p class="reveal reveal-delay-2" data-i18n="hero.description">Ich entwickle skalierbare, KI-gestützte Webanwendungen, die Menschen und Technologie nahtlos zusammenbringen. Präzise Architektur, durchdachtes Interface — beides gehört für mich untrennbar zusammen.</p>
+    <div class="hero-highlights reveal reveal-delay-3">
+      <span class="hero-pill">⚡ Remote / EU</span>
+      <span class="hero-pill">🤖 AI &amp; Web Apps</span>
+      <span class="hero-pill">🚀 Schnell &amp; sauber</span>
+    </div>
+    <div class="hero-buttons reveal reveal-delay-3">
+      <button class="btn-primary" onclick="scrollToSection('contact')" data-i18n="hero.contactBtn">Kontakt aufnehmen →</button>
+      <a class="btn-secondary" href="cv.html" target="_blank" rel="noopener" data-i18n="hero.cvBtn">↓ Lebenslauf</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-header reveal">
+      <h2><span class="section-num">01.</span><span data-i18n="about.title">Über mich</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal reveal-delay-1">
+        <p data-i18n="about.p1">Ich bin Fullstack-Entwickler mit über 5 Jahren Erfahrung in der Entwicklung moderner Webanwendungen — von der Datenbankschicht bis zum letzten Pixel im Interface. Mein Fokus liegt auf der intelligenten Integration von KI in bestehende Produktprozesse.</p>
+        <p data-i18n="about.p2">Was mich antreibt: die Überzeugung, dass exzellente Software nicht nur funktioniert, sondern sich richtig anfühlt. Ich arbeite gerne mit agilen Teams zusammen und bringe sowohl technische Tiefe als auch ein Gespür für Nutzerbedürfnisse mit.</p>
+        <div class="about-meta">
+          <div class="about-meta-item"><span data-i18n="about.labelExp">Erfahrung</span><span data-i18n="about.exp">5+ Jahre</span></div>
+          <div class="about-meta-item"><span data-i18n="about.labelLocation">Standort</span><span data-i18n="about.location">Remote / EU</span></div>
+          <div class="about-meta-item"><span data-i18n="about.labelLang">Sprachen</span><span data-i18n="about.langs">DE, EN, RU, RO</span></div>
+          <div class="about-meta-item"><span data-i18n="about.labelFocus">Schwerpunkt</span><span data-i18n="about.focus">Fullstack &amp; KI</span></div>
+        </div>
+      </div>
+      <div class="about-img reveal reveal-delay-2">
+        <div class="about-img-inner">
+          <span class="about-terminal-icon">⌨</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="section-header reveal">
+      <h2><span class="section-num">02.</span><span data-i18n="services.title">Leistungen</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="services-stats">
+      <div class="stat-card reveal">
+        <div class="stat-number">5+</div>
+        <p data-i18n="services.statExp">Jahre Erfahrung</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-1">
+        <div class="stat-number">80+</div>
+        <p data-i18n="services.statClients">Unternehmen betreut</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-2">
+        <div class="stat-number">55%</div>
+        <p data-i18n="services.statSpeed">Schnelleres Delivery</p>
+      </div>
+      <div class="stat-card reveal reveal-delay-3">
+        <div class="stat-number">24h</div>
+        <p data-i18n="services.statReply">Antwortzeit</p>
+      </div>
+    </div>
+    <div class="services-grid">
+      <article class="service-card reveal">
+        <h3 data-i18n="services.web.title">Web-Apps &amp; Produktentwicklung</h3>
+        <p data-i18n="services.web.desc">Von der ersten Idee bis zur Launch-Ready Lösung — moderne, schnelle und wartbare Webanwendungen für Startups und Mittelstand.</p>
+        <ul>
+          <li data-i18n="services.web.item1">React, Next.js und TypeScript</li>
+          <li data-i18n="services.web.item2">Performance-optimierte UX</li>
+          <li data-i18n="services.web.item3">Saubere Architektur und Skalierung</li>
+        </ul>
+      </article>
+      <article class="service-card reveal reveal-delay-1">
+        <h3 data-i18n="services.ai.title">KI-Integration &amp; Automatisierung</h3>
+        <p data-i18n="services.ai.desc">Ich verbinde bestehende Prozesse mit KI-Features, damit Teams schneller arbeiten und bessere Entscheidungen treffen.</p>
+        <ul>
+          <li data-i18n="services.ai.item1">GPT-, RAG- und Agenten-Workflows</li>
+          <li data-i18n="services.ai.item2">Chatbots und intelligente Dashboards</li>
+          <li data-i18n="services.ai.item3">Analyse, Dokumentenverarbeitung und Automatisierung</li>
+        </ul>
+      </article>
+      <article class="service-card reveal reveal-delay-2">
+        <h3 data-i18n="services.ops.title">Technische Beratung &amp; Umsetzung</h3>
+        <p data-i18n="services.ops.desc">Praktische Beratung, klare Prioritäten und schnelle Umsetzung — mit Fokus auf messbare Ergebnisse statt nur auf Features.</p>
+        <ul>
+          <li data-i18n="services.ops.item1">Produktstrategie und Tech-Review</li>
+          <li data-i18n="services.ops.item2">CI/CD, Testing und Wartbarkeit</li>
+          <li data-i18n="services.ops.item3">Schnelle Iterationen in agilen Teams</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <h2><span class="section-num">02.</span><span data-i18n="skills.title">Technologien</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-card reveal">
+        <div class="skill-card-title"><span>&gt;</span> Frontend</div>
+        <ul class="skill-list">
+          <li class="skill-item"><span class="skill-name">⚛ React</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="95"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🔷 TypeScript</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🌐 Next.js</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="85"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🎨 Tailwind CSS</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="95"></div></div></li>
+          <li class="skill-item"><span class="skill-name">⚡ Vite</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="80"></div></div></li>
+        </ul>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-1">
+        <div class="skill-card-title"><span>&gt;</span> Backend</div>
+        <ul class="skill-list">
+          <li class="skill-item"><span class="skill-name">🟢 Node.js</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="88"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🚀 Express</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🐘 PostgreSQL</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="82"></div></div></li>
+          <li class="skill-item"><span class="skill-name">💾 Drizzle ORM</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="85"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🔗 REST &amp; GraphQL</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="90"></div></div></li>
+        </ul>
+      </div>
+
+      <div class="skill-card reveal reveal-delay-2">
+        <div class="skill-card-title"><span>&gt;</span> <span data-i18n="skills.tools">Tools &amp; Infra</span></div>
+        <ul class="skill-list">
+          <li class="skill-item"><span class="skill-name">🐙 Git</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="92"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🐳 Docker</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="78"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🐧 Linux</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="80"></div></div></li>
+          <li class="skill-item"><span class="skill-name">💻 VS Code</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="95"></div></div></li>
+          <li class="skill-item"><span class="skill-name">🎭 Figma</span><div class="skill-bar-track"><div class="skill-bar-fill" data-level="72"></div></div></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-header reveal">
+      <h2><span class="section-num">03.</span><span data-i18n="exp.title">Berufserfahrung</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="exp-list" id="exp-list"></div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-header reveal">
+      <h2><span class="section-num">04.</span><span data-i18n="projects.title">Ausgewählte Projekte</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-list" id="projects-list"></div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="section-header reveal">
+      <h2><span class="section-num">06.</span><span data-i18n="testimonials.title">Empfehlungen</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="testimonials-grid">
+      <article class="testimonial-card reveal">
+        <p class="testimonial-quote" data-i18n="testimonials.one.quote">„Evgheni hat unsere Produktvision in eine klare und sehr schnelle digitale Lösung übersetzt. Die Zusammenarbeit war präzise, schnell und sehr zuverlässig.“</p>
+        <div class="testimonial-author">
+          <strong data-i18n="testimonials.one.name">Mina Weber</strong>
+          <span data-i18n="testimonials.one.role">CTO, KI-Plattform GmbH</span>
+        </div>
+      </article>
+      <article class="testimonial-card reveal reveal-delay-1">
+        <p class="testimonial-quote" data-i18n="testimonials.two.quote">„Die KI-Integration war nicht nur technisch stark, sondern hat unsere Prozesse direkt spürbar verbessert. Sehr guter Mix aus Technik und Produktverständnis.“</p>
+        <div class="testimonial-author">
+          <strong data-i18n="testimonials.two.name">Lars Hoffmann</strong>
+          <span data-i18n="testimonials.two.role">Produktleiter, DigitalWerk AG</span>
+        </div>
+      </article>
+      <article class="testimonial-card reveal reveal-delay-2">
+        <p class="testimonial-quote" data-i18n="testimonials.three.quote">„Schnell, sauber und mit sehr gutem Auge für UX. Wir hatten direkt das Gefühl, dass die Lösung wirklich zu unserem Team passt.“</p>
+        <div class="testimonial-author">
+          <strong data-i18n="testimonials.three.name">Anja Petrova</strong>
+          <span data-i18n="testimonials.three.role">Founder, Softlab Solutions</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-header reveal">
+      <h2><span class="section-num">07.</span><span data-i18n="contact.title">Kontakt aufnehmen</span></h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-copy reveal reveal-delay-1">
+        <p class="contact-badge" data-i18n="contact.badge">Was kommt als nächstes?</p>
+        <p data-i18n="contact.desc">Ich bin offen für neue Projekte, Freelance-Anfragen und Festanstellungen im deutschsprachigen Raum. Schreiben Sie mir — ich melde mich schnellstmöglich zurück.</p>
+
+        <div class="email-row">
+          <span>✉</span>
+          <a href="mailto:info@newdreden.com">info@newdreden.com</a>
+          <button class="copy-btn" onclick="copyEmail()" title="Kopieren" aria-label="E-Mail kopieren">⧉</button>
+          <span class="copy-feedback" id="copy-feedback">Kopiert!</span>
+        </div>
+
+        <div class="contact-highlights">
+          <div class="contact-highlight"><strong data-i18n="contact.avail">Verfügbar</strong><span data-i18n="contact.availValue">Remote / EU</span></div>
+          <div class="contact-highlight"><strong data-i18n="contact.response">Antwortzeit</strong><span data-i18n="contact.responseValue">Innerhalb von 24 Stunden</span></div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal reveal-delay-2" onsubmit="handleContactSubmit(event)">
+        <label>
+          <span data-i18n="contact.formName">Name</span>
+          <input type="text" name="name" required />
+        </label>
+        <label>
+          <span data-i18n="contact.formEmail">E-Mail</span>
+          <input type="email" name="email" required />
+        </label>
+        <label>
+          <span data-i18n="contact.formMessage">Nachricht</span>
+          <textarea name="message" rows="5" required></textarea>
+        </label>
+        <button type="submit" class="btn-primary" data-i18n="contact.formSubmit">Nachricht senden</button>
+        <p class="form-status" id="form-status" data-i18n="contact.formStatus">Die Nachricht wird nur lokal vorbereitet und kann direkt per E-Mail weitergeleitet werden.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/" target="_blank" rel="noopener" title="GitHub">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" title="LinkedIn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+    <a href="mailto:info@newdreden.com" title="E-Mail">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    </a>
+  </div>
+  <p class="footer-copy" data-i18n="footer.built">Entwickelt von Evgheni Sischin</p>
+</footer>
+
+<button class="back-to-top" id="back-to-top" aria-label="Nach oben">↑</button>
+
+<script src="script.js"></script>
+</body>
+</html>
