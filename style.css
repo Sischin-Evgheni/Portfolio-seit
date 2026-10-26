@@ -43,6 +43,33 @@ button { background: none; border: none; cursor: pointer; font-family: inherit; 
 ul { list-style: none; }
 img { display: block; max-width: 100%; }
 
+/* ─── PAGE BACKGROUND ───
+   Чтобы поставить свою картинку: положите файл (например bg.jpg) в папку проекта
+   и замените значение --bg-image на: url('bg.jpg');
+   Затемнение поверх картинки регулируется в --bg-overlay. */
+:root {
+  --bg-image: none;
+  --bg-overlay:
+    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(0,229,255,.14), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 90%, rgba(120,60,255,.12), transparent 60%),
+    linear-gradient(180deg, rgba(8,13,20,.55) 0%, rgba(8,13,20,.85) 100%);
+}
+.light-mode {
+  --bg-overlay:
+    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(0,153,184,.14), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 90%, rgba(120,60,255,.08), transparent 60%),
+    linear-gradient(180deg, rgba(238,242,247,.6) 0%, rgba(238,242,247,.9) 100%);
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: var(--bg-overlay), var(--bg-image) center / cover no-repeat, var(--bg);
+  transition: background var(--transition);
+}
+
 /* ─── CANVAS BACKGROUND ─── */
 #bg-canvas {
   position: fixed;
