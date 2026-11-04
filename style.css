@@ -1158,6 +1158,16 @@ kbd {
 .process-card p { color: var(--fg2); font-size: .9rem; line-height: 1.7; }
 
 /* Contact form */
+.contact-form input:-webkit-autofill,
+.contact-form input:-webkit-autofill:hover,
+.contact-form input:-webkit-autofill:focus,
+.contact-form textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--fg);
+  caret-color: var(--fg);
+  -webkit-box-shadow: 0 0 0 1000px var(--bg2) inset;
+  box-shadow: 0 0 0 1000px var(--bg2) inset;
+  transition: background-color 9999s ease-out 0s;
+}
 .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 .contact-form button[disabled] { opacity: .6; cursor: progress; }
 .form-status.ok { color: #4ade80; }

@@ -116,7 +116,7 @@ const TRANSLATIONS = {
     "contact.formSending": "Wird gesendet…",
     "contact.formStatus": "Ihre Nachricht geht direkt in mein Postfach.",
     "contact.formOk": "Danke! Ihre Nachricht ist angekommen — ich melde mich bald.",
-    "contact.formFail": "Senden fehlgeschlagen. Ich öffne stattdessen Ihr E-Mail-Programm…",
+    "contact.formFail": "Senden fehlgeschlagen. Ich öffne stattdessen Ihr E-Mail-Programm…", "contact.formLocal": "Das Formular funktioniert nur auf der Live-Seite (github.io). Ich öffne Ihr E-Mail-Programm…", "contact.formActivate": "Fast geschafft: Das Formular wird gerade aktiviert. Bitte später erneut senden.",
     "contact.copied": "E-Mail kopiert!",
     "footer.built": "Entwickelt von Evgheni Sischin",
     "footer.source": "Quellcode auf GitHub",
@@ -196,7 +196,7 @@ const TRANSLATIONS = {
     "contact.formSending": "Sending…",
     "contact.formStatus": "Your message goes straight to my inbox.",
     "contact.formOk": "Thank you! Your message arrived — I'll get back to you soon.",
-    "contact.formFail": "Sending failed. Opening your e-mail app instead…",
+    "contact.formFail": "Sending failed. Opening your e-mail app instead…", "contact.formLocal": "The form only works on the live site (github.io). Opening your e-mail app…", "contact.formActivate": "Almost there: the form is being activated. Please try again a bit later.",
     "contact.copied": "E-mail copied!",
     "footer.built": "Designed & Built by Evgheni Sischin",
     "footer.source": "Source on GitHub",
@@ -276,7 +276,7 @@ const TRANSLATIONS = {
     "contact.formSending": "Отправляю…",
     "contact.formStatus": "Сообщение придёт прямо мне на почту.",
     "contact.formOk": "Спасибо! Сообщение получено — скоро отвечу.",
-    "contact.formFail": "Не удалось отправить. Открываю почтовую программу…",
+    "contact.formFail": "Не удалось отправить. Открываю почтовую программу…", "contact.formLocal": "Форма работает только на живом сайте (github.io). Открываю почтовую программу…", "contact.formActivate": "Почти готово: форма активируется. Попробуйте отправить чуть позже.",
     "contact.copied": "E-mail скопирован!",
     "footer.built": "Разработано Евгением Сищиным",
     "footer.source": "Исходный код на GitHub",
@@ -453,7 +453,20 @@ async function handleContactSubmit(event) {
   btn.textContent = t('contact.formSending');
   status.className = 'form-status';
 
+  const fallbackToMail = () => {
+    const subject = encodeURIComponent(`Neue Anfrage von ${data.name || 'Unbekannt'}`);
+    const body = encodeURIComponent(`Name: ${data.name}\nE-Mail: ${data.email}\n\n${data.message}`);
+    setTimeout(() => { window.location.href = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`; }, 1200);
+  };
+
   try {
+    // FormSubmit only works from a real web origin, not from a file opened from disk
+    if (location.protocol === 'file:') {
+      status.textContent = t('contact.formLocal');
+      status.classList.add('err');
+      fallbackToMail();
+      return;
+    }
     const res = await fetch(PROFILE.formEndpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
@@ -464,16 +477,22 @@ async function handleContactSubmit(event) {
       })
     });
     const json = await res.json().catch(() => ({}));
-    if (!res.ok || String(json.success) !== 'true') throw new Error(json.message || res.status);
+    const serverMsg = String(json.message || '');
+    if (/activat/i.test(serverMsg)) {
+      // first submission ever: FormSubmit e-mailed an activation link to the owner
+      status.textContent = t('contact.formActivate');
+      status.classList.add('ok');
+      return;
+    }
+    if (!res.ok || String(json.success) !== 'true') throw new Error(serverMsg || `HTTP ${res.status}`);
     status.textContent = t('contact.formOk');
     status.classList.add('ok');
     form.reset();
   } catch (err) {
+    console.warn('[contact form]', err);
     status.textContent = t('contact.formFail');
     status.classList.add('err');
-    const subject = encodeURIComponent(`Neue Anfrage von ${data.name || 'Unbekannt'}`);
-    const body = encodeURIComponent(`Name: ${data.name}\nE-Mail: ${data.email}\n\n${data.message}`);
-    setTimeout(() => { window.location.href = `mailto:${PROFILE.email}?subject=${subject}&body=${body}`; }, 900);
+    fallbackToMail();
   } finally {
     btn.disabled = false;
     btn.textContent = t('contact.formSubmit');
