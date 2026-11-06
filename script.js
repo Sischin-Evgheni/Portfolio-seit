@@ -15,10 +15,10 @@ const PROFILE = {
 const PROJECTS = [
   {
     id: 'dashboard',
-    name: 'Marketplace Sales Dashboard',
+    name: 'ShopPulse – Verkaufsanalyse',
     stack: ['D3.js', 'JavaScript', 'HTML/CSS', 'Datenaufbereitung'],
-    repo: 'https://github.com/Sischin-Evgheni/marketplace-sales-dashboard',
-    live: 'https://sischin-evgheni.github.io/marketplace-sales-dashboard/',
+    repo: 'https://github.com/Sischin-Evgheni/shoppulse-dashboard',
+    live: 'https://sischin-evgheni.github.io/shoppulse-dashboard/',
     code: `// 2.255 Buchungen → 1 Dashboard
 const revenue = d3.sum(sales, d => d.price);
 const payout  = revenue - logistics
