@@ -14,19 +14,6 @@ const PROFILE = {
 /* Real projects (language-independent part). Texts live in TRANSLATIONS → "projects.items". */
 const PROJECTS = [
   {
-    id: 'helper',
-    name: 'KI-Lernhelfer Bot',
-    stack: ['Python', 'aiogram 3', 'Google Gemini API', 'Pillow', 'asyncio'],
-    repo: '',
-    live: '',
-    code: `@dp.message(F.photo)
-async def handle_photo(msg):
-    image = Image.open(photo_bytes)
-    answer = await asyncio.to_thread(
-        gemini.generate, [image, PROMPT])
-    await msg.answer(answer.text)`
-  },
-  {
     id: 'dashboard',
     name: 'Marketplace Sales Dashboard',
     stack: ['D3.js', 'JavaScript', 'HTML/CSS', 'Datenaufbereitung'],
@@ -102,7 +89,7 @@ const TRANSLATIONS = {
     "services.ai.title": "KI & Automatisierung",
     "services.ai.desc": "Ich nutze KI-Tools, um wiederkehrende Aufgaben schneller und zuverlässiger zu erledigen.",
     "services.ai.item1": "ChatGPT, Claude und KI-Agenten im Arbeitsalltag",
-    "services.ai.item2": "Telegram-Bots und kleine Python-Skripte",
+    "services.ai.item2": "Kleine Skripte und Automatisierungen",
     "services.ai.item3": "Automatische Auswertungen und Datensicherung",
     "services.ops.title": "Web & Daten",
     "services.ops.desc": "Einfache Websites und übersichtliche Dashboards aus Rohdaten.",
@@ -111,7 +98,7 @@ const TRANSLATIONS = {
     "services.ops.item3": "SQL-Grundlagen (PostgreSQL)",
     "about.title": "Über mich",
     "about.p1": "Ich bin IT-Servicetechniker aus Dresden mit über 8 Jahren Praxis: im Elektronik-Fachhandel, im technischen Support für Mobilfunk und in der Betreuung von Produktions- und Büro-PCs. Ich finde Fehler, erkläre Lösungen verständlich und bleibe auch bei Störungen ruhig.",
-    "about.p2": "In meiner Freizeit baue ich eigene Projekte mit KI, Automatisierung und Web – vom Telegram-Bot bis zum Verkaufs-Dashboard. Mein Ziel: eine feste Stelle im IT-Support, in der ich Technik und Kundenkontakt verbinde.",
+    "about.p2": "In meiner Freizeit baue ich eigene Projekte mit KI, Automatisierung und Web – von einer interaktiven 3D-Website bis zum Verkaufs-Dashboard. Mein Ziel: eine feste Stelle im IT-Support, in der ich Technik und Kundenkontakt verbinde.",
     "about.labelExp": "Erfahrung", "about.exp": "8+ Jahre",
     "about.labelLocation": "Standort", "about.location": "Dresden",
     "about.labelLang": "Sprachen", "about.langs": "DE (B1), RU, RO, EN (A2)",
@@ -156,7 +143,6 @@ const TRANSLATIONS = {
         bullets: ["Reparatur und Fehlerdiagnose an Hard- und Software von elektronischen Geräten.", "Installation von Betriebssystemen und Software, Kundenberatung und Verkauf."] }
     ],
     "projects.items": {
-      helper: "Telegram-Bot, der Fotos von Aufgaben mit der Google Gemini API analysiert und eine verständliche Lösung mit Erklärung zurückschickt. Asynchron mit aiogram 3, Bildverarbeitung mit Pillow, Schlüssel sicher in .env.",
       dashboard: "Interaktives Verkaufs-Dashboard für Marktplatz-Händler: aus über 2.000 Einzelbuchungen eines Wochenberichts werden Umsatz, Rückgaben, Gebühren und Auszahlung anschaulich dargestellt. Mit Demo-Daten.",
       flower: "Interaktive 3D-Landingpage mit Three.js: Beim Bewegen der Maus wächst ein nächtliches Blumental in Echtzeit – mit Bloom-Effekt und responsivem Layout.",
       zensus: "Übungsprojekt (Weiterbildung): relationales Datenmodell für die Zensus-Daten 2011 und 2022 mit 10 786 Gemeinden. Excel-Rohdaten bereinigt, als CSV exportiert und per SQL-Skript in PostgreSQL importiert.",
@@ -186,7 +172,7 @@ const TRANSLATIONS = {
     "services.ai.title": "AI & Automation",
     "services.ai.desc": "I use AI tools to get recurring tasks done faster and more reliably.",
     "services.ai.item1": "ChatGPT, Claude and AI agents in daily work",
-    "services.ai.item2": "Telegram bots and small Python scripts",
+    "services.ai.item2": "Small scripts and automations",
     "services.ai.item3": "Automated reports and backups",
     "services.ops.title": "Web & Data",
     "services.ops.desc": "Simple websites and clear dashboards built from raw data.",
@@ -195,7 +181,7 @@ const TRANSLATIONS = {
     "services.ops.item3": "SQL basics (PostgreSQL)",
     "about.title": "About Me",
     "about.p1": "I am an IT service technician from Dresden with 8+ years of hands-on experience: in electronics retail, in technical support for a mobile network operator and in looking after production and office PCs. I find faults, explain solutions clearly and stay calm when things break.",
-    "about.p2": "In my free time I build my own projects with AI, automation and web – from a Telegram bot to a sales dashboard. My goal: a permanent IT support role where I combine technology and customer contact.",
+    "about.p2": "In my free time I build my own projects with AI, automation and web – from an interactive 3D website to a sales dashboard. My goal: a permanent IT support role where I combine technology and customer contact.",
     "about.labelExp": "Experience", "about.exp": "8+ Years",
     "about.labelLocation": "Location", "about.location": "Dresden",
     "about.labelLang": "Languages", "about.langs": "DE (B1), RU, RO, EN (A2)",
@@ -240,7 +226,6 @@ const TRANSLATIONS = {
         bullets: ["Repair and troubleshooting of hardware and software of electronic devices.", "Installation of operating systems and software, customer advice and sales."] }
     ],
     "projects.items": {
-      helper: "A Telegram bot that analyzes photos of assignments with the Google Gemini API and replies with a clear, explained solution. Async with aiogram 3, image handling with Pillow, secrets kept in .env.",
       dashboard: "Interactive sales dashboard for marketplace sellers: 2,000+ individual records from a weekly report turned into a clear view of revenue, returns, fees and payout. Uses demo data.",
       flower: "Interactive 3D landing page built with Three.js: move the mouse and a night valley of flowers grows in real time – with bloom effect and responsive layout.",
       zensus: "Training project (further education): a relational data model for the German census 2011 and 2022 with 10,786 municipalities. Raw Excel data cleaned, exported to CSV and imported into PostgreSQL via SQL script.",
@@ -270,7 +255,7 @@ const TRANSLATIONS = {
     "services.ai.title": "ИИ и автоматизация",
     "services.ai.desc": "Использую ИИ-инструменты, чтобы делать повторяющиеся задачи быстрее и надёжнее.",
     "services.ai.item1": "ChatGPT, Claude и ИИ-агенты в работе",
-    "services.ai.item2": "Telegram-боты и небольшие скрипты на Python",
+    "services.ai.item2": "Небольшие скрипты и автоматизация",
     "services.ai.item3": "Автоматические отчёты и резервные копии",
     "services.ops.title": "Веб и данные",
     "services.ops.desc": "Простые сайты и наглядные дашборды из сырых данных.",
@@ -279,7 +264,7 @@ const TRANSLATIONS = {
     "services.ops.item3": "Основы SQL (PostgreSQL)",
     "about.title": "Обо мне",
     "about.p1": "Я сервисный IT-техник из Дрездена с опытом более 8 лет: магазин электроники, техническая поддержка у мобильного оператора, обслуживание производственных и офисных компьютеров. Нахожу неисправности, понятно объясняю решения и сохраняю спокойствие при сбоях.",
-    "about.p2": "В свободное время делаю собственные проекты с ИИ, автоматизацией и вебом – от Telegram-бота до дашборда продаж. Цель: постоянная работа в IT-поддержке, где я совмещаю технику и общение с клиентами.",
+    "about.p2": "В свободное время делаю собственные проекты с ИИ, автоматизацией и вебом – от интерактивного 3D-сайта до дашборда продаж. Цель: постоянная работа в IT-поддержке, где я совмещаю технику и общение с клиентами.",
     "about.labelExp": "Опыт", "about.exp": "8+ лет",
     "about.labelLocation": "Город", "about.location": "Дрезден",
     "about.labelLang": "Языки", "about.langs": "DE (B1), RU, RO, EN (A2)",
@@ -324,7 +309,6 @@ const TRANSLATIONS = {
         bullets: ["Ремонт и диагностика аппаратной и программной части электроники.", "Установка операционных систем и ПО, консультации и продажи."] }
     ],
     "projects.items": {
-      helper: "Telegram-бот: получает фото задания, анализирует его через Google Gemini API и присылает понятное решение с объяснением. Асинхронный aiogram 3, обработка изображений через Pillow, ключи в .env.",
       dashboard: "Интерактивный дашборд продаж для продавцов на маркетплейсах: более 2 000 строк недельного отчёта превращаются в наглядную картину выручки, возвратов, комиссий и выплат. На демо-данных.",
       flower: "Интерактивная 3D-страница на Three.js: при движении мыши в реальном времени вырастает ночная долина цветов – с эффектом свечения и адаптивной вёрсткой.",
       zensus: "Учебный проект (повышение квалификации): реляционная модель данных переписи Германии 2011 и 2022 годов, 10 786 общин. Данные из Excel очищены, выгружены в CSV и импортированы в PostgreSQL SQL-скриптом.",
